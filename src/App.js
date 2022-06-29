@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+
+import MenuSuperior from "./components/MenuSuperior";
+import ListagemVeiculos from "./components/ListagemVeiculos";
+import UserLogin from "./components/UserLogin";
+import Estatistica from "./components/Estatistica";
+import TestDrive from "./components/TestDrive";
+
+import { UsuarioContext } from "./UsuarioContext.js";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [dados, setDados] = useState({})
+
+    return (
+        <UsuarioContext.Provider value={{ dados, setDados }}>
+            <Fragment>
+                <MenuSuperior />
+                <Routes>
+                    <Route path="/" element={<ListagemVeiculos />} />
+                    <Route path="login" element={<UserLogin />} />
+                    <Route path="estatistica" element={<Estatistica />} />
+                    <Route path="TestDrive" element={<TestDrive />} />
+                </Routes>
+            </Fragment>
+        </UsuarioContext.Provider>
+    );
 }
 
 export default App;
