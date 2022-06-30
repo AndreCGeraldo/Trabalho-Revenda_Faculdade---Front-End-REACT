@@ -89,6 +89,8 @@ const TestDrive = () => {
                                 <option value="3">Palio</option>
                                 <option value="4">Ka</option>
                                 <option value="5">Cruze</option>
+                                <option value="6">Tracker</option>
+                                <option value="7">Toro</option>
                             </select>
                         </div>
                     </div>
